@@ -1,0 +1,201 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+:root {
+    --cor-principal: rgba(0,0,0,.5); 
+    --cor-secundaria: rgba(255,255,255,.07); 
+    --cor-terciaria: rgba(255,255,255,.1);
+    --cor-de-destaque: #E67E22; 
+    --cor-de-fundo: #ECF0F1; /* Cinza claro para fundo */
+    --cor-preta: #2C3E50; /* Azul marinho para texto */
+    --cor-texto: #FFF; /* Branco para texto */
+  }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Ubuntu',"poppins";
+    text-decoration: none;
+} 
+  /* aplicação */
+  body {
+    min-height: 100vh;
+    background: url(fund.webp) no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+  /* ======animação==== */
+section {
+    min-height: 100vh;
+    background: url(fund.webp) no-repeat;
+    background-size: cover;
+    background-position: center;
+    animation: animateBg 5s linear infinite;
+  }
+@keyframes animateBg {
+   100% {
+    filter:hue-rotate(360deg)
+   }
+}
+/* =====sidebar==== */
+.sidebar{
+    position: fixed;
+    top: 0;
+    width: 0;
+    width: 80px;
+    height: 100%;
+    background-color: var(--cor-principal);
+    backdrop-filter: blur(5px);
+    border-right: 2px solid var(--cor-secundaria);
+    padding: 6px 14px;
+    transition: .5s ease;
+
+}
+.sidebar.active {
+  width: 240px;
+}
+/* -----------logo-------- */
+.sidebar .logo-content .logo{
+    display: flex;
+    align-items:center;
+    color: var(--cor-texto);
+    width: 100%;
+    height: 50px;
+    pointer-events: none;
+    opacity: 0;
+    transition: .3s ease;  
+}
+.sidebar.active .logo-content .logo {
+    transition-delay: .2s;
+    opacity: 1;
+
+}
+.logo-content .logo i {
+    background-color:var(--cor-de-destaque);
+    font-size: 28px;
+    margin-right: 5px;
+}
+.logo-content .logo h2{
+    font-size: 20px;
+}
+/* ======botton======= */
+.sidebar #btn{
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--cor-de-fundo);
+    font-size: 20px;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+}
+.sidebar.active #btn {
+    left:90%;
+}
+/* =========lista ======= */
+.sidebar ul {
+   margin-top: 20px;
+}
+
+.sidebar ul li {
+   position: relative;
+   width: 100%;
+   height: 50px;
+   list-style: none;
+   margin: 5px 0;
+   line-height: 50px;
+}
+.sidebar ul li input {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background: var(--cor-terciaria);
+   border-radius: 6px;
+   border: none;
+   outline: none;
+   padding-left: 50px;
+   font-size: 18px;
+   color: var(--cor-de-fundo);
+}
+.sidebar.active ul li input {
+  padding: 0 20px 0 50px;
+}
+.sidebar ul li .bx-search {
+    position: absolute;
+    color: var(--cor-de-fundo);
+    font-size: 22px;
+    z-index: 99;
+}
+.sidebar ul li a {
+   display: flex;
+   align-items: center;
+   color: var(--cor-de-fundo);
+   text-decoration: none;
+   border-radius: 6px;
+   white-space: nowrap;
+   transition: .5s ease ;
+}
+.sidebar ul li a:hover {
+  background: var(--cor-de-destaque);
+}
+.sidebar ul .list-item.active a {
+   background-color: var(--cor-de-destaque);
+}
+.sidebar ul li i {
+   min-height: 50px;
+   height: 50px;
+   text-align: center;
+   line-height: 50px;
+   margin: 0 15px;
+}
+
+.sidebar .list-logout{
+   position: absolute;
+   bottom: 0;
+   margin: 15px 0;
+   width: 64%;
+}
+.sidebar.active .list-logout {
+   width: 89%;
+
+}
+.sidebar .link-name {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s ease;
+}
+.sidebar.active .link-name {
+  transition: .2s;
+  opacity: 1;
+  pointer-events: auto;
+}
+.sidebar ul li .tooltip {
+  position: absolute;
+  top: 0;
+  left: 130px;
+  transform: translate(-50%,-50%);
+  width: 122px;
+  height: 35px;
+  background: var(--cor-de-destaque);
+  color: var(--cor-de-fundo);
+  border-radius: 6px;
+  box-shadow: 0 5px 10px var(--cor-terciaria);
+  text-align: center;
+  line-height: 35px;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.sidebar ul li:hover .tooltip {
+  transition: .5s ease;
+  top:50%;
+  opacity: 1;
+}
+.sidebar.active ul li .tooltip {
+  display: none;
+}
